@@ -25,9 +25,8 @@ BuildRequires:	kf6-extra-cmake-modules >= %{version}
 BuildRequires:	kf6-kcoreaddons-devel >= %{version}
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
-# TODO
-#BuildRequires:	polkit-qt6-1-devel >= 0.99.0
-#BuildRequires:	polkit-qt6-1-gui-devel >= 0.99.0
+BuildRequires:	polkit-qt6-1-devel >= 0.175.0
+BuildRequires:	polkit-qt6-1-gui-devel >= 0.175.0
 BuildRequires:	qt6-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
@@ -37,7 +36,7 @@ Requires:	Qt6DBus >= %{qtver}
 Requires:	Qt6Widgets >= %{qtver}
 Requires:	kf6-dirs
 Requires:	kf6-kcoreaddons >= %{version}
-#Requires:	polkit-qt6-1 >= 0.99.0
+Requires:	polkit-qt6-1 >= 0.175.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		qt6dir		%{_libdir}/qt6
@@ -95,6 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libKF6AuthCore.so.5.*.*
 %ghost %{_libdir}/libKF6AuthCore.so.6
 %dir %{_libdir}/qt6/plugins/kf6/kauth
+%dir %{_libdir}/qt6/plugins/kf6/kauth/backend
 %dir %{_libdir}/qt6/plugins/kf6/kauth/helper
 %attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kauth/helper/kauth_helper_plugin.so
 %{_datadir}/dbus-1/system.d/org.kde.kf6auth.conf
@@ -103,6 +103,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kf6/kauth/dbus_service.stub
 %{_datadir}/qlogging-categories6/kauth.categories
 %{_datadir}/qlogging-categories6/kauth.renamecategories
+%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kauth/backend/kauth_backend_plugin.so
+%dir %{_prefix}/libexec/kf6/kauth
+%attr(755,root,root) %{_prefix}/libexec/kf6/kauth/kauth-policy-gen
 
 %files devel
 %defattr(644,root,root,755)
