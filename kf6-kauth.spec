@@ -3,18 +3,18 @@
 %bcond_with	tests		# build with tests
 # TODO:
 # - runtime Requires if any
-%define		kdeframever	5.249.0
+%define		kdeframever	6.0
 %define		qtver		5.15.2
 %define		kfname		kauth
 
 Summary:	Execute actions as privileged user
 Name:		kf6-%{kfname}
-Version:	5.249.0
-Release:	0.1
+Version:	6.0.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	fde25c3b9c644325f7d5dc0d67cc0ec9
+Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
+# Source0-md5:	430907dc0f160f5588b060ffdcc358d4
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -23,6 +23,7 @@ BuildRequires:	Qt6Widgets-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16
 BuildRequires:	kf6-extra-cmake-modules >= %{version}
 BuildRequires:	kf6-kcoreaddons-devel >= %{version}
+BuildRequires:	kf6-kwindowsystem-devel >= %{version}
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-qt6-1-devel >= 0.175.0
@@ -91,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kfname}6_qt.lang
 %defattr(644,root,root,755)
 %doc README.md
-%attr(755,root,root) %{_libdir}/libKF6AuthCore.so.5.*.*
+%attr(755,root,root) %{_libdir}/libKF6AuthCore.so.*.*
 %ghost %{_libdir}/libKF6AuthCore.so.6
 %dir %{_libdir}/qt6/plugins/kf6/kauth
 %dir %{_libdir}/qt6/plugins/kf6/kauth/backend
