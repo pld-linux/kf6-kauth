@@ -3,18 +3,18 @@
 %bcond_with	tests		# build with tests
 # TODO:
 # - runtime Requires if any
-%define		kdeframever	6.1
+%define		kdeframever	6.2
 %define		qtver		5.15.2
 %define		kfname		kauth
 
 Summary:	Execute actions as privileged user
 Name:		kf6-%{kfname}
-Version:	6.1.0
+Version:	6.2.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	332f96f9356f2b90f8cde116b96cc320
+# Source0-md5:	6fbb26258e55042a6a94c21ddb07e9a5
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
