@@ -3,18 +3,18 @@
 %bcond_with	tests		# build with tests
 # TODO:
 # - runtime Requires if any
-%define		kdeframever	6.18
+%define		kdeframever	6.19
 %define		qtver		5.15.2
 %define		kfname		kauth
 
 Summary:	Execute actions as privileged user
 Name:		kf6-%{kfname}
-Version:	6.18.0
+Version:	6.19.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	a0d53cd632f16aaac947a3c69c21a234
+# Source0-md5:	c118771e453cbdf3a142ac2e11e8fe4d
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -32,13 +32,13 @@ BuildRequires:	qt6-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-#Obsoletes:	kf5-%{kfname} < %{version}
 Requires:	Qt6Core >= %{qtver}
 Requires:	Qt6DBus >= %{qtver}
 Requires:	Qt6Widgets >= %{qtver}
 Requires:	kf6-dirs
 Requires:	kf6-kcoreaddons >= %{version}
 Requires:	polkit-qt6-1 >= 0.175.0
+#Obsoletes:	kf5-%{kfname} < %{version}
 %requires_eq_to Qt6Core Qt6Core-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -53,10 +53,10 @@ small (hopefully secure) helper utilities.
 Summary:	Header files for %{kfname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kfname}
 Group:		X11/Development/Libraries
-#Obsoletes:	kf5-%{kfname}-devel < %{version}
 Requires:	%{name} = %{version}-%{release}
 Requires:	cmake >= 3.16
 Requires:	kf6-kcoreaddons-devel >= %{version}
+#Obsoletes:	kf5-%{kfname}-devel < %{version}
 
 %description devel
 Header files for %{kfname} development.
@@ -95,19 +95,19 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kfname}6_qt.lang
 %defattr(644,root,root,755)
 %doc README.md
-%attr(755,root,root) %{_libdir}/libKF6AuthCore.so.*.*
+%{_libdir}/libKF6AuthCore.so.*.*
 %ghost %{_libdir}/libKF6AuthCore.so.6
 %dir %{_libdir}/qt6/plugins/kf6/kauth
 %dir %{_libdir}/qt6/plugins/kf6/kauth/backend
 %dir %{_libdir}/qt6/plugins/kf6/kauth/helper
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kauth/helper/kauth_helper_plugin.so
+%{_libdir}/qt6/plugins/kf6/kauth/helper/kauth_helper_plugin.so
 %{_datadir}/dbus-1/system.d/org.kde.kf6auth.conf
 %dir %{_datadir}/kf6/kauth
 %{_datadir}/kf6/kauth/dbus_policy.stub
 %{_datadir}/kf6/kauth/dbus_service.stub
 %{_datadir}/qlogging-categories6/kauth.categories
 %{_datadir}/qlogging-categories6/kauth.renamecategories
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kauth/backend/kauth_backend_plugin.so
+%{_libdir}/qt6/plugins/kf6/kauth/backend/kauth_backend_plugin.so
 %dir %{_prefix}/libexec/kf6/kauth
 %attr(755,root,root) %{_prefix}/libexec/kf6/kauth/kauth-policy-gen
 
