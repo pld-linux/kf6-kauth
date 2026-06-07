@@ -49,6 +49,12 @@ KAuth provides a convenient, system-integrated way to offload actions
 that need to be performed as a privileged user (root, for example) to
 small (hopefully secure) helper utilities.
 
+%description -l pl.UTF-8
+KAuth dostarcza wygodnego, zintegrowanego z systemem sposobu na
+przekazanie akcji, które mają być uruchomione przez uprzywilejowanego
+użytkownika (np. root) do małych (mamy nadzieję bezpiecznych)
+programów pomocniczych.
+
 %package devel
 Summary:	Header files for %{kfname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kfname}
